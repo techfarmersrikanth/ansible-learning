@@ -1,0 +1,2 @@
+web_server: apache # user can choose apache or nginx
+index_content: "<h1> welcome to the webserver by sri </h1>"

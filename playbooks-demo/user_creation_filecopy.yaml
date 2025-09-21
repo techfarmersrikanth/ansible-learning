@@ -1,0 +1,19 @@
+---
+- name: user creation and file copy
+  hosts: all
+  become: yes
+  tasks:
+    - name: create a new user
+      user:
+        name: Srikanth
+        comment: "devops user"
+        shell: /bin/bash
+        state: present
+        create_home: yes
+    - name: copy a file to user home 
+      copy:
+        src: /home/ubuntu/nginx.yaml
+        dest: /tmp/nginx.yaml
+        owner: Srikanth
+        mode: '0777'
+        

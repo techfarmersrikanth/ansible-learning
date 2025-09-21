@@ -1,0 +1,22 @@
+---
+- name: install apache if selected
+  apt: 
+    name: apache2
+    state: present
+  when: web_server == "apache"
+
+- name: install nginx if selected
+  apt:
+    name: nginx
+    state: present
+  when: web_server == "nginx"
+
+- name: deploy custom html code
+  copy:
+    content: "{{ index_content }}"
+    dest: /var/www/html/index.html
+  
+- name: start the service
+  service: 
+    name: "{{ web_server }}"
+    state: started

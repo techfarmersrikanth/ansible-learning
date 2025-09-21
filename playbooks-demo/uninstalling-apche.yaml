@@ -1,0 +1,16 @@
+---
+- name: Unistallng the Apache on the servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: stop the apache service
+      service:
+        name: apache2
+        state: stopped
+    - name: unistalling the apache2
+      apt:
+        name: apache2
+        state: absent
+    - name: Display the message
+      debug:
+        msg: "successfully deleted the apache from the servers"
